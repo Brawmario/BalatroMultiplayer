@@ -38,8 +38,9 @@ local function action_lobbyInfo(host, hostHash, hostCached, guest, guestHash, gu
 	MP.LOBBY.players = {}
 	MP.LOBBY.is_host = is_host == "true"
 	local function parseName(name)
+		name = name or "Guest~1"
 		local username, col_str = string.match(name, "([^~]+)~(%d+)")
-		username = username or "Guest"
+		username = username or name
 		local col = tonumber(col_str) or 1
 		col = math.max(1, math.min(col, 25))
 		return username, col
